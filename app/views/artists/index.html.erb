@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Artists</h1>
+
+<%= link_to new_artist_path do %>
+  <i class="glyphicon glyphicon-plus"></i> Add
+<% end %>
+
+<div class="row">
+  <% @artists.each do |artist| %>
+    <div class="col-md-6">
+      <div class="well">
+        <h2><%= link_to artist.name, artist %></h2>
+        <p>
+          <% artist.songs.each_with_index do |song, index| %>
+            <% if index < (artist.songs.length - 1) %>
+              <%= link_to song.name, song %>,
+            <% else %>
+              <%= link_to song.name, song %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <%= link_to edit_artist_path(artist) do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+
+          <%= link_to artist, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
