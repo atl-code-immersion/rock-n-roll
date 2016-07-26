@@ -15,3 +15,19 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$("#show_form").click(function(){
+		$("#song_form").removeClass("invisible");
+		$(this).addClass("invisible");
+	})
+})
+
+
+
+
+
+
+
+
+

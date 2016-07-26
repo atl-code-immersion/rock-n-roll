@@ -4,12 +4,13 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all
+    @artists = Artist.order(:name)
   end
 
   # GET /artists/1
   # GET /artists/1.json
   def show
+    @song = Song.new
   end
 
   # GET /artists/new
@@ -70,6 +71,6 @@ class ArtistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artist_params
-      params.require(:artist).permit(:name)
+      params.require(:artist).permit(:name, :rating)
     end
 end

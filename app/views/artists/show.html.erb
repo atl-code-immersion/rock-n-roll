@@ -1,9 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="well">
+			<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+			<h1>
+			  <%= @artist.name %>
+			</h1>
+			<p>
+				<% @artist.rating.times do %>
+          <i class="glyphicon glyphicon-star yellow-star"></i>
+        <% end %>
+        <% (10 - @artist.rating).times do %>
+          <i class="glyphicon glyphicon-star"></i>
+        <% end %>
+			</p>
+			<p>
+				<% @artist.songs.each_with_index do |song, index| %>
+          <% if index < (@artist.songs.length - 1) %>
+            <%= link_to song.name, song %>,
+          <% else %>
+            <%= link_to song.name, song %>
+          <% end %>
+        <% end %>
+			</p>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+			<p>
+				<a id="show_form"><i class="glyphicon glyphicon-plus"></i> Add Song</a>
+			</p>
+
+			<div id="song_form" class="invisible">
+				<%= render 'songs/form' %>
+			</div>
+
+			<p>
+				<%= link_to edit_artist_path(@artist) do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+				<% end %>
+				<%= link_to @artist, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="glyphicon glyphicon-trash"></i>
+        <% end %>
+       </p>
+		</div>
+	</div>
+</div>

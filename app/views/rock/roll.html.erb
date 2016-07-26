@@ -1,24 +1,53 @@
-<h1>My Top 5 Songs</h1>
+<div class="well">
+  <h1>My Top 5 Songs</h1>
 
-<div class="row">
-  <% @songs.each do |song| %>
-    <div class="col-md-6">
-      <div class="well">
-        <h2><%= link_to song.name, song %></h2>
-        <h4>by <%= song.artist.name %></h4>
-        <p>
-          <% song.rating.times do %>
-            <i class="glyphicon glyphicon-star yellow-star"></i>
-          <% end %>
-          <% (10 - song.rating).times do %>
-            <i class="glyphicon glyphicon-star"></i>
-          <% end %>
-        </p>
+  <div class="row">
+    <% @songs.each_with_index do |song, index| %>
+      <% if (index < @songs.length - 1) %>
+        <div class="col-md-6">
+      <% else %>
+        <div class="col-md-6 col-md-offset-3">
+      <% end %>
+        <div class="well top-five-wells">
+          <h1 class="top-five-numbers">#<%= index + 1 %></h1>
+          <h2><%= link_to song.name, song %></h2>
+          <h4>by <%= song.artist.name %></h4>
+          <p>
+            <% song.rating.times do %>
+              <i class="glyphicon glyphicon-star yellow-star"></i>
+            <% end %>
+            <% (10 - song.rating).times do %>
+              <i class="glyphicon glyphicon-star"></i>
+            <% end %>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
-
-
-
+<div class="well">
+  <h1>My Top 5 Artists</h1>
+  <div class="row">
+    <% @artists.each_with_index do |artist, index| %>
+      <% if (index < @artists.length - 1) %>
+        <div class="col-md-6">
+      <% else %>
+        <div class="col-md-6 col-md-offset-3">
+      <% end %>
+        <div class="well top-five-wells">
+          <h1 class="top-five-numbers">#<%= index + 1 %></h1>
+          <h2><%= link_to artist.name, artist %></h2>
+          <p>
+            <% artist.rating.times do %>
+              <i class="glyphicon glyphicon-star yellow-star"></i>
+            <% end %>
+            <% (10 - artist.rating).times do %>
+              <i class="glyphicon glyphicon-star"></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

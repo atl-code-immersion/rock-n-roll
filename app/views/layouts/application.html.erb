@@ -4,6 +4,7 @@
   <title>Top5</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -19,7 +20,7 @@
 	          <h3 class="masthead-brand"><i class="glyphicon glyphicon-headphones"></i> Aaron's Top 5</h3>
 	          <nav>
 	            <ul class="nav masthead-nav">
-	              <li class="active"><%= link_to "Top 5", root_path %></li>
+	              <li><%= link_to "Top 5", root_path %></li>
 	              <li><%= link_to "Artists", artists_path %></li>
 	              <li><%= link_to "Songs", songs_path %></li>
 	            </ul>

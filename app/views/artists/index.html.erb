@@ -2,15 +2,29 @@
 
 <h1>My Artists</h1>
 
-<%= link_to new_artist_path do %>
-  <i class="glyphicon glyphicon-plus"></i> Add
-<% end %>
+<p>
+  <%= link_to new_artist_path do %>
+    <i class="glyphicon glyphicon-plus"></i> Add
+  <% end %>
+</p>
 
 <div class="row">
-  <% @artists.each do |artist| %>
-    <div class="col-md-6">
-      <div class="well">
+  <% @artists.each_with_index do |artist, index| %>
+    <% if (@artists.length%2 == 0) || (index < @artists.length - 1) %>
+      <div class="col-md-6">
+    <% else %>
+      <div class="col-md-6 col-md-offset-3">
+    <% end %>
+      <div class="well artist-well">
         <h2><%= link_to artist.name, artist %></h2>
+        <p>
+          <% artist.rating.times do %>
+            <i class="glyphicon glyphicon-star yellow-star"></i>
+          <% end %>
+          <% (10 - artist.rating).times do %>
+            <i class="glyphicon glyphicon-star"></i>
+          <% end %>
+        </p>
         <p>
           <% artist.songs.each_with_index do |song, index| %>
             <% if index < (artist.songs.length - 1) %>
