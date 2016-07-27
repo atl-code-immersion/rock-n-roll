@@ -16,11 +16,13 @@ class SongsController < ApplicationController
   def new
     @song = Song.new
     @artists = Artist.order(:name)
+    @ratings = %w(1 2 3 4 5 6 7 8 9 10)
   end
 
   # GET /songs/1/edit
   def edit
     @artists = Artist.order(:name)
+    @ratings = %w(1 2 3 4 5 6 7 8 9 10)
   end
 
   # POST /songs

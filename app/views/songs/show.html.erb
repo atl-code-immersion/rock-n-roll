@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="well">
+			<h1>
+			  <%= @song.name %>
+			</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @song.name %>
-</p>
+			<h3>
+			  by <%= @song.artist.name %>
+			</h3>
 
-<p>
-  <strong>Artist:</strong>
-  <%= @song.artist_id %>
-</p>
+			<p>
+			  <% @song.rating.times do %>
+	        <i class="glyphicon glyphicon-star yellow-star"></i>
+	      <% end %>
+	      <% (10 - @song.rating).times do %>
+	        <i class="glyphicon glyphicon-star"></i>
+	      <% end %>
+			</p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @song.rating %>
-</p>
-
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+			<%= link_to edit_song_path(@song) do %>
+				<i class="glyphicon glyphicon-pencil"></i>
+			<% end %>
+			<%= link_to do %>
+				<i class="glyphicon glyphicon-trash"></i>
+			<% end %>
+		</div>
+	</div>
+</div>

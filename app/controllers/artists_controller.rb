@@ -11,15 +11,22 @@ class ArtistsController < ApplicationController
   # GET /artists/1.json
   def show
     @song = Song.new
+    @ratings = %w(1 2 3 4 5 6 7 8 9 10)
+
+    if params[:name] != nil
+      song = Song.create(name: params[:name], rating: params[:rating], )
+    end
   end
 
   # GET /artists/new
   def new
     @artist = Artist.new
+    @ratings = %w(1 2 3 4 5 6 7 8 9 10)
   end
 
   # GET /artists/1/edit
   def edit
+    @ratings = %w(1 2 3 4 5 6 7 8 9 10)
   end
 
   # POST /artists
